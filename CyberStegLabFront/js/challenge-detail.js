@@ -69,7 +69,6 @@ function renderQuizUI() {
   const options = challenge.options || [];
 
   document.getElementById('answer-area').innerHTML = `
-    <p class="text-cyan mb-16" style="font-size:14px;">${challenge.description || ''}</p>
     <div id="quiz-options">
       ${options.map(opt => `
         <button class="quiz-option" onclick="selectOption(this, '${opt}')">
