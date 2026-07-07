@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CyberStegLab — Learn</title>
+    <link rel="icon" type="image/png" href="../img/learn.png">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+    <div id="nav"></div>
+
+
+    <div class="page">
+        <h1 class="learn">LEARN</h1>
+        <div class="filter-row mb-16">
+            <button class="filter-btn active" onclick="filterLessons('all', this)">ALL</button>
+            <button class="filter-btn" onclick="filterLessons('beginner', this)">BEGINNER</button>
+            <button class="filter-btn" onclick="filterLessons('intermediate', this)">INTERMEDIATE</button>
+            <button class="filter-btn" onclick="filterLessons('advanced', this)">ADVANCED</button>
+        </div>
+        <div class="learn-layout">
+
+            <!-- თემების სია -->
+            <div class="learn-sidebar">
+                <div id="lesson-list"></div>
+            </div>
+
+            <!-- კონტენტი -->
+            <div class="learn-content">
+                <div id="lesson-body"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/nav.js"></script>
+    <script src="../js/lessons.js"></script>
+</body>
+
+</html>

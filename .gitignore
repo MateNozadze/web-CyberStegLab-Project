@@ -1,0 +1,6 @@
+serviceAccountKey.json
+bid/
+bin/
+obj/
+.idea/
+.vs/

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <title>Color-Key სტეგანოგრაფია</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h1>🔐 Color-Key სტეგანოგრაფია</h1>
+
+<!-- HIDE -->
+<h2>დამალვა</h2>
+<label>სურათი:</label>
+<input type="file" id="hideImage" accept="image/*">
+<label>ტექსტი:</label>
+<textarea id="hideText" rows="3"></textarea>
+<label>პაროლი:</label>
+<input type="text" id="hidePassword">
+<button onclick="doHide()">დამალვა</button>
+<div id="hideResult" class="result" style="display:none"></div>
+
+<!-- REVEAL -->
+<h2>ამოღება</h2>
+<label>სტეგო-სურათი:</label>
+<input type="file" id="revealImage" accept="image/*">
+<label>Color-Key (hex):</label>
+<input type="text" id="revealKey" placeholder="64-სიმბოლოიანი hex">
+<button onclick="doReveal()">ამოღება</button>
+<div id="revealResult" class="result" style="display:none"></div>
+
+<script src="/static/main.js"></script>
+</body>
+</html>

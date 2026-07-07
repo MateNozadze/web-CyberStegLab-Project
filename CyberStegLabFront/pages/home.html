@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberStegLab — Home</title>
+  <link rel="icon" type="image/png" href="../img/home-icon-silhouette.png">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div id="nav"></div>
+
+  <div class="page">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="hero-title">CYBER<span>STEG</span>LAB</h1>
+      <p class="hero-desc">
+        ისწავლე სტეგანოგრაფია თამაშის სახით. გადაჭერი გამოწვევები,
+        დააგროვე XP და გახდი ექსპერტი.
+      </p>
+      <div class="hero-btns">
+        <button class="btn btn-primary" onclick="location.href='learn.html'">START LEARNING</button>
+        <button class="btn btn-outline" onclick="location.href='challenges.html'">VIEW CHALLENGES</button>
+      </div>
+    </section>
+    <!--DESCRIPTION -->
+    <div class="description">
+      <p class="description-title">WHAT IS KEYCOLOR TOOL?</p>
+
+      <p class="description-text">
+        ეს ხელსაწყო მალავს ტექსტს ან ფაილს ჩვეულებრივი ფოტოს შიგნით — სურათი
+        გარეგნულად არაფრით არ იცვლება, მონაცემი კი შეუმჩნევლად „ჩაშენებულია" პიქსელებში.
+      </p>
+
+      <p class="description-title">პროცესი სამ ნაბიჯად</p>
+
+      <p class="description-text">
+        <strong>01 — შენ ირჩევ სურათს და წერ პაროლს.</strong><br>
+        ეს პაროლი გავლენას ახდენს, თუ როგორ დაიმალება ინფორმაცია სწორედ ამ სურათში.
+      </p>
+
+      <p class="description-text">
+        <strong>02 — სისტემა ქმნის უნიკალურ გასაღებს.</strong><br>
+        პაროლი ერწყმის თავად სურათის მახასიათებლებს და იბადება ერთჯერადი გასაღები.
+      </p>
+
+      <p class="description-text">
+        <strong>03 — გასაღები განსაზღვრავს, სად იმალება მონაცემი.</strong><br>
+        ეს გასაღები ეუბნება სისტემას, სურათის ზუსტად რომელ ადგილებში ჩააგოს დამალული ინფორმაცია.
+      </p>
+    </div>
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-num">6+</div>
+        <div class="stat-label">CHALLENGES</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">3</div>
+        <div class="stat-label">LEVELS</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">540</div>
+        <div class="stat-label">TOTAL XP</div>
+      </div>
+    </div>
+
+    <!-- LEVELS -->
+    <p class="section-title">DIFFICULTY LEVELS</p>
+    <div class="grid-3">
+
+      <div class="card">
+        <span class="badge badge-beginner">BEGINNER</span>
+        <h3 class="mt-16">საბაზისო კონცეფციები</h3>
+        <p class="text-muted mt-8" style="font-size:13px; line-height:1.7;">
+          LSB სტეგანოგრაფია, Base64 კოდირება, პაროლის სიძლიერე.
+          სანამ დაიწყებ, გაიარე გაკვეთილი.
+        </p>
+        <button class="btn btn-outline mt-16" onclick="location.href='learn.html'">LEARN FIRST →</button>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-intermediate">INTERMEDIATE</span>
+        <h3 class="mt-16">პრაქტიკული გამოყენება</h3>
+        <p class="text-muted mt-8" style="font-size:13px; line-height:1.7;">
+          RGB არხების ანალიზი, XOR შიფრი.
+          საჭიროა საბაზისო ცოდნა.
+        </p>
+        <button class="btn btn-outline mt-16" onclick="location.href='challenges.html?difficulty=intermediate'">VIEW
+          →</button>
+      </div>
+
+      <div class="card">
+        <span class="badge badge-advanced">ADVANCED</span>
+        <h3 class="mt-16">ექსპერტ-დონის</h3>
+        <p class="text-muted mt-8" style="font-size:13px; line-height:1.7;">
+          მრავალფენიანი სტეგო, კომბინირებული გამოწვევები.
+          მხოლოდ გამოცდილებისთვის.
+        </p>
+        <button class="btn btn-outline mt-16" onclick="location.href='challenges.html?difficulty=advanced'">VIEW
+          →</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="../js/auth.js"></script>
+  <script src="../js/nav.js"></script>
+  <script src="../js/stats.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberStegLab — ColorKey Tool</title>
+  <link rel="icon" type="image/png" href="../img/tool.png">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav"></div>
+
+<div class="page">
+
+  <div class="page-header">
+    <h2>COLORKEY TOOL</h2>
+    <p>სურათის RGB პიქსელებიდან გენერირებული გასაღებით AES-256 შიფრაცია და LSB სტეგანოგრაფია</p>
+  </div>
+
+  <!-- TABS -->
+  <div class="ck-tabs">
+  <button class="ck-tab active" onclick="switchTab('hide', this)">[ HIDE TEXT ]</button>
+  <button class="ck-tab" onclick="switchTab('reveal', this)">[ REVEAL TEXT ]</button>
+  <button class="ck-tab" onclick="switchTab('hide-file', this)">[ HIDE FILE ]</button>
+  <button class="ck-tab" onclick="switchTab('reveal-file', this)">[ REVEAL FILE ]</button>
+</div>
+
+  <!-- HIDE PANEL -->
+  <div class="ck-panel active" id="panel-hide">
+    <p class="section-title">ტექსტის დამალვა სურათში</p>
+
+    <div class="ck-grid">
+
+      <div class="ck-field">
+        <label class="ck-label">სურათი (PNG / JPG / BMP)</label>
+        <div class="ck-drop" id="hideDropZone">
+          <input type="file" id="hideImage" accept="image/png,image/jpeg,image/bmp,image/tiff">
+          <div class="ck-drop-icon">📁</div>
+          <div class="ck-drop-text">გადმოაგდე ან <span>აირჩიე</span></div>
+          <div class="ck-drop-name" id="hideFilename"></div>
+        </div>
+        <img id="hidePreview" class="ck-preview">
+      </div>
+
+      <div class="ck-field">
+        <label class="ck-label">საიდუმლო ტექსტი</label>
+        <textarea class="ck-textarea" id="hideText" placeholder="ჩაწერე დასამალი ტექსტი..."></textarea>
+
+        <label class="ck-label mt-16">პაროლი</label>
+        <input type="password" class="ck-input" id="hidePassword" placeholder="Color-Key-ს გენერაციისთვის">
+
+        <button class="btn btn-primary ck-submit" id="hideBtn" onclick="doHide()">
+          HIDE TEXT
+          <span class="ck-spinner" id="hideSpinner"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="ck-result" id="hideResult" style="display:none">
+      <p class="section-title">შედეგი</p>
+      <div id="hideResultContent"></div>
+    </div>
+  </div>
+
+  <!-- REVEAL PANEL -->
+  <div class="ck-panel" id="panel-reveal">
+    <p class="section-title">ტექსტის ამოღება სტეგო-სურათიდან</p>
+
+    <div class="ck-grid">
+
+      <div class="ck-field">
+        <label class="ck-label">სტეგო-სურათი</label>
+        <div class="ck-drop" id="revealDropZone">
+          <input type="file" id="revealImage" accept="image/png,image/jpeg,image/bmp,image/tiff">
+          <div class="ck-drop-icon">🔍</div>
+          <div class="ck-drop-text">გადმოაგდე ან <span>აირჩიე</span></div>
+          <div class="ck-drop-name" id="revealFilename"></div>
+        </div>
+        <img id="revealPreview" class="ck-preview">
+      </div>
+
+      <div class="ck-field">
+        <label class="ck-label">Color-Key (64-სიმბოლოიანი hex)</label>
+        <input type="text" class="ck-input" id="revealKey" placeholder="e.g. a3f1c9...">
+
+        <button class="btn btn-primary ck-submit" id="revealBtn" onclick="doReveal()">
+          REVEAL TEXT
+          <span class="ck-spinner" id="revealSpinner"></span>
+        </button>
+      </div>
+
+    </div>
+
+    <div class="ck-result" id="revealResult" style="display:none">
+      <p class="section-title">გაშიფრული ტექსტი</p>
+      <div id="revealResultContent"></div>
+    </div>
+  </div>
+  
+  <!-- HIDE FILE PANEL -->
+<div class="ck-panel" id="panel-hide-file">
+  <p class="section-title">ფაილის დამალვა სურათში</p>
+  <div class="ck-grid">
+    <div class="ck-field">
+      <label class="ck-label">სურათი (PNG / JPG / BMP)</label>
+      <div class="ck-drop">
+        <input type="file" id="hideFileImage" accept="image/png,image/jpeg,image/bmp,image/tiff">
+        <div class="ck-drop-icon">📁</div>
+        <div class="ck-drop-text">გადმოაგდე ან <span>აირჩიე</span></div>
+        <div class="ck-drop-name" id="hideFileImageName"></div>
+      </div>
+      <img id="hideFilePreview" class="ck-preview">
+    </div>
+    <div class="ck-field">
+      <label class="ck-label">დასამალი ფაილი</label>
+      <div class="ck-drop">
+        <input type="file" id="hideFileInput">
+        <div class="ck-drop-icon">📄</div>
+        <div class="ck-drop-text">გადმოაგდე ან <span>აირჩიე</span></div>
+        <div class="ck-drop-name" id="hideFileName"></div>
+      </div>
+      <label class="ck-label mt-16">პაროლი</label>
+      <input type="password" class="ck-input" id="hideFilePassword" placeholder="Color-Key-ს გენერაციისთვის">
+      <button class="btn btn-primary ck-submit" id="hideFileBtn" onclick="doHideFile()">
+        HIDE FILE
+        <span class="ck-spinner" id="hideFileSpinner"></span>
+      </button>
+    </div>
+  </div>
+  <div class="ck-result" id="hideFileResult" style="display:none">
+    <p class="section-title">შედეგი</p>
+    <div id="hideFileResultContent"></div>
+  </div>
+</div>
+
+<!-- REVEAL FILE PANEL -->
+<div class="ck-panel" id="panel-reveal-file">
+  <p class="section-title">ფაილის ამოღება სტეგო-სურათიდან</p>
+  <div class="ck-grid">
+    <div class="ck-field">
+      <label class="ck-label">სტეგო-სურათი</label>
+      <div class="ck-drop">
+        <input type="file" id="revealFileImage" accept="image/png,image/jpeg,image/bmp,image/tiff">
+        <div class="ck-drop-icon">🔍</div>
+        <div class="ck-drop-text">გადმოაგდე ან <span>აირჩიე</span></div>
+        <div class="ck-drop-name" id="revealFileImageName"></div>
+      </div>
+      <img id="revealFilePreview" class="ck-preview">
+    </div>
+    <div class="ck-field">
+      <label class="ck-label">Color-Key (64-სიმბოლოიანი hex)</label>
+      <input type="text" class="ck-input" id="revealFileKey" placeholder="e.g. a3f1c9...">
+      <button class="btn btn-primary ck-submit" id="revealFileBtn" onclick="doRevealFile()">
+        REVEAL FILE
+        <span class="ck-spinner" id="revealFileSpinner"></span>
+      </button>
+    </div>
+  </div>
+  <div class="ck-result" id="revealFileResult" style="display:none">
+    <p class="section-title">შედეგი</p>
+    <div id="revealFileResultContent"></div>
+  </div>
+</div>
+
+  <!-- HOW IT WORKS -->
+  <div class="ck-how">
+    <p class="section-title">როგორ მუშაობს</p>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ck-step-num">01</div>
+        <h3>RGB Features</h3>
+        <p class="text-muted mt-8" style="font-size:13px;line-height:1.7;">სურათის პიქსელებიდან RGB სტატისტიკური მახასიათებლების ამოღება</p>
+      </div>
+      <div class="card">
+        <div class="ck-step-num">02</div>
+        <h3>Color-Key Gen</h3>
+        <p class="text-muted mt-8" style="font-size:13px;line-height:1.7;">SHA-256(RGB XOR password) — უნიკალური 256-ბიტიანი გასაღების გენერაცია</p>
+      </div>
+      <div class="card">
+        <div class="ck-step-num">03</div>
+        <h3>AES-256-CBC</h3>
+        <p class="text-muted mt-8" style="font-size:13px;line-height:1.7;">Color-Key-ით ტექსტის დაშიფვრა IV + ciphertext ფორმატში</p>
+      </div>
+      <div class="card">
+        <div class="ck-step-num">04</div>
+        <h3>LSB Embed</h3>
+        <p class="text-muted mt-8" style="font-size:13px;line-height:1.7;">დაშიფრული ბაიტები პიქსელების least-significant ბიტებში ჩაშენება</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/colorkey.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberStegLab — Challenge</title>
+  <link rel="icon" type="image/png" href="../img/personal-growth.png">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<div id="nav"></div>
+
+<div class="page">
+
+  <div class="page-header">
+    <a href="challenges.html" class="text-muted" style="font-size:12px;">← BACK</a>
+    <h2 id="ch-title" class="mt-8">...</h2>
+    <div class="ch-meta mt-8">
+      <span id="ch-badge"></span>
+      <span id="ch-xp" class="ch-xp"></span>
+      <span id="ch-type" class="text-muted"></span>
+    </div>
+  </div>
+  <div id="ch-image-wrap" class="mt-16"></div>
+
+  <div class="detail-layout">
+
+    <!-- მარცხნი ინფო -->
+    <div class="detail-info">
+      <div class="card">
+        <h3 class="text-cyan">DESCRIPTION</h3>
+        <p id="ch-desc" class="mt-16" style="font-size:16px; line-height:1.8;"></p>
+      </div>
+
+      <div class="card mt-16">
+        <h3 class="text-cyan">HINT</h3>
+        <p id="ch-hint" class="mt-16 text-muted" style="font-size:13px; line-height:1.8;">
+          გჭირდება დახმარება? <span class="text-green" style="cursor:pointer;" onclick="showHint()">SHOW HINT</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- მარჯვნივ პასუხი -->
+    <div class="detail-answer">
+      <div class="card">
+        <h3 class="text-cyan">SUBMIT ANSWER</h3>
+
+        <div id="answer-area" class="mt-16">
+          <input type="text" id="answer-input" placeholder="შეიყვანე პასუხი..." style="font-size:16px;">
+          <button class="btn btn-primary mt-8" onclick="submitAnswer()">SUBMIT →</button>
+        </div>
+
+        <div id="submit-result" class="result mt-16"></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="../js/auth.js"></script>
+<script src="../js/nav.js"></script>
+<script src="../js/challenge-detail.js"></script>
+</body>
+</html>

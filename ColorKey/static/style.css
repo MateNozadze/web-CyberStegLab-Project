@@ -1,0 +1,7 @@
+body { font-family: monospace; max-width: 600px; margin: 40px auto; padding: 0 20px; }
+h1 { font-size: 1.4rem; }
+h2 { font-size: 1rem; margin-top: 30px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+input, textarea { width: 100%; padding: 6px; margin: 4px 0 10px; box-sizing: border-box; }
+button { padding: 8px 20px; cursor: pointer; }
+.result { margin-top: 12px; padding: 10px; background: #f4f4f4; word-break: break-all; }
+.error { color: red; }

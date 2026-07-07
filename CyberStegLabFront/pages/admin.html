@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ka">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberStegLab — Admin</title>
+  <link rel="icon" type="image/png" href="../img/admin.png">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+  <div id="admin-login" class="center">
+    <div class="auth-card">
+      <div class="auth-header">
+        <h1>CYBER<span class="text-cyan">STEG</span>LAB</h1>
+      </div>
+      <p class="auth-sub mb-16">ADMIN PANEL</p>
+      <p class="text-muted mb-16" style="font-size:12px;">შედი ადმინის ექაუნთით</p>
+      <button class="btn btn-primary" onclick="checkAdminAccess()">ENTER</button>
+      <div id="loginError" class="result"></div>
+    </div>
+  </div>
+
+  <div id="admin-panel" class="hidden">
+
+    <nav>
+      <span class="nav-logo">CYBER<span>STEG</span>LAB <span class="text-muted">ADMIN</span></span>
+      <div class="nav-links">
+        <button class="nav-btn active" onclick="showTab('challenges', this)">CHALLENGES</button>
+        <button class="nav-btn" onclick="showTab('lessons', this)">LESSONS</button>
+        <button class="nav-btn" onclick="location.href='home.html'">SITE</button>
+        <button class="nav-btn text-error" onclick="adminLogout()">LOGOUT</button>
+      </div>
+    </nav>
+
+    <div class="page">
+
+      <!-- CHALLENGES TAB -->
+      <div id="tab-challenges">
+        <div class="page-header">
+          <h2>CHALLENGES</h2>
+          <p>დამატება, რედაქტირება, წაშლა</p>
+        </div>
+
+        <button class="btn btn-primary mb-16" style="max-width:200px;" onclick="showChallengeForm()">+ ADD
+          CHALLENGE</button>
+
+        <!-- FORM -->
+        <div id="challenge-form" class="card mb-24 hidden">
+          <h3 class="text-cyan mb-16"> CHALLENGE FORM</h3>
+          <input type="hidden" id="ch-edit-id">
+          <input type="text" id="ch-title" placeholder="Title">
+          <input type="text" id="ch-description" placeholder="Description">
+          <select id="ch-difficulty">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <select id="ch-type">
+            <option value="stego">Stego</option>
+            <option value="rgb">RGB</option>
+            <option value="password">Password</option>
+            <option value="quiz">Quiz</option>
+          </select>
+          <div id="quiz-fields" style="display:none">
+            <input id="ch-option1" placeholder="ვარიანტი 1" class="input" />
+            <input id="ch-option2" placeholder="ვარიანტი 2" class="input" />
+            <input id="ch-option3" placeholder="ვარიანტი 3" class="input" />
+            <input id="ch-option4" placeholder="ვარიანტი 4" class="input" />
+          </div>
+          <input type="number" id="ch-xp" placeholder="XP">
+          <input type="text" id="ch-answer" placeholder="Correct Answer">
+          
+          <input type="text" id="ch-hint" placeholder="Hint (optional)">
+
+          <input type="file" id="ch-image-file" accept="image/*">
+          <input type="text" id="ch-image-url" placeholder="ან URL პირდაპირ (optional)">
+          
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <button class="btn btn-primary" onclick="saveChallenge()">SAVE</button>
+            <button class="btn btn-outline" onclick="hideChallengeForm()">CANCEL</button>
+          </div>
+          <div id="ch-form-result" class="result mt-8"></div>
+        </div>
+
+        <!-- LIST -->
+        <div id="challenges-list"></div>
+      </div>
+
+      <!-- LESSONS TAB -->
+      <div id="tab-lessons" class="hidden">
+        <div class="page-header">
+          <h2>LESSONS</h2>
+          <p> დამატება, რედაქტირება, წაშლა</p>
+        </div>
+
+        <button class="btn btn-primary mb-16" style="max-width:200px;" onclick="showLessonForm()">+ ADD LESSON</button>
+
+        <!-- FORM -->
+        <div id="lesson-form" class="card mb-24 hidden">
+          <h3 class="text-cyan mb-16"> LESSON FORM</h3>
+          <input type="hidden" id="ls-edit-id">
+          <input type="text" id="ls-title" placeholder="Title">
+          <textarea id="ls-content" placeholder="Content (HTML)" rows="8"></textarea>
+          <select id="ls-badge">
+            <option value="beginner">Beginner</option>
+            <option value="intermediate">Intermediate</option>
+            <option value="advanced">Advanced</option>
+          </select>
+          <input type="number" id="ls-order" placeholder="Order (1, 2, 3...)">
+          <div style="display:flex; gap:10px; margin-top:8px;">
+            <button class="btn btn-primary" onclick="saveLesson()">SAVE</button>
+            <button class="btn btn-outline" onclick="hideLessonForm()">CANCEL</button>
+          </div>
+          <div id="ls-form-result" class="result mt-8"></div>
+        </div>
+
+        <!-- LIST -->
+        <div id="lessons-list"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../js/admin.js"></script>
+</body>
+
+</html>
