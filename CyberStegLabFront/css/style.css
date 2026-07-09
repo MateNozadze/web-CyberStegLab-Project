@@ -397,6 +397,25 @@ input::placeholder { color: var(--muted); }
 /*
    CHALLENGE CARD
  */
+
+/*ჩელენჯების მთავარ გრიდში ტექსტის შეზღუდვა 2 ხაზზე */
+.ch-desc-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 15px;
+  color: #aaa;
+  font-size: 14px;
+}
+
+/*დეტალების გვერდზე ტექსტის ახალი ხაზების (Enter-ების) შენარჩუნება */
+#ch-desc, #ch-hint {
+  white-space: pre-line;
+}
+
 .challenge-card {
   background: var(--surface2);
   border: 1px solid var(--border);
@@ -419,7 +438,7 @@ input::placeholder { color: var(--muted); }
 
 .ch-type  { font-size: 13px; letter-spacing: 3px; color: rgb(142, 161, 152); margin-bottom: var(--space-2); }
 .ch-title { font-size: 18px; color: var(--green); margin-bottom: var(--space-2); }
-.ch-desc  { font-size: 16px; line-height: 1.6; margin-bottom: var(--space-4); }
+.ch-desc  { font-size: 16px; line-height: 1.6; margin-bottom: var(--space-4); white-space: pre-line;}
 .ch-footer { display: flex; justify-content: space-between; align-items: center; }
 .ch-xp    { font-size: 13px; color: var(--cyan); }
 
@@ -954,6 +973,7 @@ body:has(.hero)::after {
   gap: var(--space-4);
   transition: border-color var(--transition) var(--ease);
 }
+
 
 .admin-row:hover {
   border-color: var(--border);

@@ -29,7 +29,8 @@ function renderChallenges(list) {
     <div class="challenge-card" onclick="location.href='challenge-detail.html?id=${ch.id}'">
       <div class="ch-type">${ch.type}</div>
       <div class="ch-title">${ch.title}</div>
-      <div class="ch-desc">${ch.description}</div>
+      <!-- აი აქ შევცვალეთ კლასი ch-desc-preview-ზე -->
+      <div class="ch-desc-preview">${ch.description}</div>
       <div class="ch-footer">
         <span class="ch-xp">+${ch.xp} XP</span>
         <span class="badge badge-${ch.difficulty}">${ch.difficulty}</span>
